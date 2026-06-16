@@ -25,7 +25,7 @@ export const getAllHotels = async (req, res) => {
     const pool = await getPool();
     const result = await pool.query(`
   SELECT h.*,
-    (SELECT "hotelpic" FROM "hotelpics" WHERE "hotelid" = h."hotelid" LIMIT 1) AS "mainimage"
+    (SELECT "hotelpic" FROM "hotelpics" WHERE "hotelid" = h."hotelid" LIMIT 1) AS "mainimage",
     (SELECT count(*) FROM "hotelpics" WHERE "hotelid" = h."hotelid") AS "piccount"
   FROM "hotel" h
   ORDER BY h."hotelid"
