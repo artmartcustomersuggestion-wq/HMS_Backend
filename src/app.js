@@ -33,7 +33,7 @@ app.set("trust proxy", 1);
 // ─────────────────────────────────────────────
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
     exposedHeaders: ["Set-Cookie"],
   })
