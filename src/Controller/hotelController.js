@@ -1,5 +1,5 @@
 import { getPool } from "../config/db.js";
-import sql from "mssql";
+
 import cloudinary from "cloudinary";
 
 
