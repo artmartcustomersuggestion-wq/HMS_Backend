@@ -76,9 +76,9 @@ app.get("/test-db", async (req, res) => {
   try {
     const pool = await getPool();
 
-    const result = await pool.request().query("SELECT * FROM Hotel");
+    const result = await pool.query("SELECT * FROM hotel");
 
-    res.json(result.recordset);
+    res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).send("DB Error");
@@ -348,12 +348,6 @@ router.get("/analytics/bookings-status", authenticate, authorize("Admin"), analy
 app.use("/api", router);
 
 // ─────────────────────────────────────────────
-// SERVER
+// EXPORT (server.js is responsible for app.listen())
 // ─────────────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 export default app;
